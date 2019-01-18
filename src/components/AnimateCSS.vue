@@ -21,7 +21,7 @@ export default {
 
 <style lang="sass" scoped>
 
-@import "animateCSS.css";
+@import "./../css/animateCSS.css";
 </style>
 
 

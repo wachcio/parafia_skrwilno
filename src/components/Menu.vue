@@ -49,6 +49,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "./../css/common.scss";
 .menuWrapper {
   position: fixed;
   float: right;
@@ -56,7 +57,7 @@ export default {
   //   padding: 0;
   top: 75px;
   right: 0;
-
+  z-index: 1000;
   //   transform: translate(-100%, 0);
   //   transition: 0.3s all ease-in-out;
 }
@@ -68,16 +69,17 @@ export default {
   font-size: 1.5em;
   //   padding: 15px;
   //   transform: translateX(103%);
+  z-index: 1000;
 
-  background-color: #222;
+  background-color: $bgcBlack;
   & .item {
-    border-bottom: 1px solid #f3bc3f;
+    border-bottom: 1px solid $yellow;
     // margin: 15px;
     padding: 15px;
     transition: all 0.3s ease-in-out;
     &:hover {
-      color: #222;
-      background-color: #f3bc3f;
+      color: $bgcBlack;
+      background-color: $yellow;
       cursor: pointer;
       //   &::before {
       //     content: ">";

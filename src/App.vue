@@ -3,7 +3,9 @@
     <div class="container">
       <Navigation :scrolled="scrolled" @setScroll="setScroll"/>
       <section id="first">Pierwsza</section>
-      <section id="wordOfGod">Słowo Boże</section>
+      <section id="wordOfGod">
+        <Liturgy v-for="(liturgy, index) in liturgies" :key="index" v-bind:liturgy="liturgy"/>
+      </section>
       <section id="news">Aktualności</section>
       <section id="ourChurch">Nasz kościół</section>
       <section id="holyMasses">Msze</section>
@@ -19,12 +21,15 @@
 </template>
 
 <script>
+import axios from "axios";
 import Navigation from "./components/Navigation";
+import Liturgy from "./components/Liturgy";
 export default {
   name: "app",
   data() {
     return {
-      scrolled: false
+      scrolled: false,
+      liturgies: ""
     };
   },
   methods: {
@@ -36,9 +41,28 @@ export default {
         this.scrolled = true;
       }
       // this.scrolled = false;
+    },
+    getData() {
+      axios
+        .get("http://wachcio.pl/kosciol/API/liturgyCallendar.php")
+        .then(response => {
+          // handle success
+          // console.log(response);
+          this.liturgies = response.data;
+          // if (this.liturgies.today.date == this.liturgies.tomorow.date) {
+          if (this.liturgies.today.weekday_name == "niedziela") {
+            this.liturgies.sunday = null;
+          }
+          if (this.liturgies.tomorrow.weekday_name == "niedziela") {
+            this.liturgies.sunday = null;
+          }
+        });
     }
   },
-  components: { Navigation },
+  components: { Navigation, Liturgy },
+  created() {
+    this.getData();
+  },
   beforeMount() {
     window.addEventListener("scroll", this.handleScroll);
     // console.log("scrolling Injected");
@@ -51,41 +75,12 @@ export default {
 </script>
 
 <style lang="scss">
-*,
-::after,
-::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  font-family: "Roboto", sans-serif;
-  font-size: 15px;
-  color: #f3bc3f;
-  background-color: whitesmoke;
-  min-width: 250px;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-}
-
-footer {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  text-align: center;
-
-  height: 60px;
-  background-color: #222;
-  & h1 {
-    width: 100%;
-    font-size: 1em;
-  }
-}
+@import "./css/common.scss";
 section {
   height: 350px;
-  color: #222;
+  color: $bgcBlack;
+}
+#wordOfGod {
+  height: auto;
 }
 </style>

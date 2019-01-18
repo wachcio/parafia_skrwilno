@@ -2,7 +2,7 @@
   <div>
     <nav>
       <img src="./../assets/Church.svg" alt>
-      <h1>Parafia w Skrwilnie</h1>
+      <h2>Parafia w Skrwilnie</h2>
       <div class="hamburger" @click="hamburgerClick()">
         <div class="bar1" :class="hamburgerChange"></div>
         <div class="bar2" :class="hamburgerChange"></div>
@@ -50,6 +50,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "./../css/common.scss";
 nav {
   display: flex;
   flex-direction: row;
@@ -58,13 +59,14 @@ nav {
   padding: 15px;
 
   height: 75px;
-  background-color: #222;
+  background-color: $bgcBlack;
 
-  & h1 {
+  & h2 {
     width: 100%;
   }
   & .hamburger {
     width: 35px;
+    font-size: 1em;
 
     & .bar1,
     & .bar2,
@@ -75,8 +77,8 @@ nav {
       margin: 6px 0;
       -webkit-transition: 0.4s;
       transition: 0.4s;
-      color: #f3bc3f;
-      background-color: #f3bc3f;
+      color: $yellow;
+      background-color: $yellow;
     }
 
     & .bar1.change {

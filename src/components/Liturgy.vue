@@ -88,19 +88,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "./../css/common.scss";
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 h4,
 h5 {
   margin: 0;
   // margin-bottom: 10px;
-  margin-left: 5px;
+  // margin-left: 5px;
   padding: 0 10px;
   transition: all 0.3s ease-in-out;
-  background-color: #401c19;
-  border: #401c19 0 solid;
+  background-color: $bgcBlack;
+  border: $bgcBlack 0 solid;
+  color: $yellow;
   // border-radius: 10px;
   // border-top-left-radius: 10px;
 }
@@ -113,15 +116,18 @@ h5:hover {
 p {
   padding: 0 20px;
   margin-left: 5px;
+  margin-right: 5px;
   // margin-bottom: 5px;
   display: block;
   text-align: justify;
-  border: #401d18 2px solid;
-  // background-color: #401d18;
+  color: $bgcBlack;
+  border: $bgcBlack 2px solid;
+  background-color: lighten($bgcBlack, 70%);
 }
 i {
   float: right;
   transition: all 0.5s ease-in-out;
+  margin-right: 20px;
 }
 .space {
   height: 15px;
