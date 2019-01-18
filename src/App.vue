@@ -2,7 +2,9 @@
   <div id="app">
     <div class="container">
       <Navigation :scrolled="scrolled" @setScroll="setScroll"/>
-      <section id="first">Pierwsza</section>
+      <section id="patron">
+        <Patron/>
+      </section>
       <section id="wordOfGod">
         <Liturgy v-for="(liturgy, index) in liturgies" :key="index" v-bind:liturgy="liturgy"/>
       </section>
@@ -23,6 +25,7 @@
 <script>
 import axios from "axios";
 import Navigation from "./components/Navigation";
+import Patron from "./components/Patron";
 import Liturgy from "./components/Liturgy";
 export default {
   name: "app",
@@ -32,6 +35,7 @@ export default {
       liturgies: ""
     };
   },
+  components: { Navigation, Patron, Liturgy },
   methods: {
     setScroll(val) {
       this.scrolled = val;
@@ -59,7 +63,7 @@ export default {
         });
     }
   },
-  components: { Navigation, Liturgy },
+
   created() {
     this.getData();
   },
@@ -77,7 +81,7 @@ export default {
 <style lang="scss">
 @import "./css/common.scss";
 section {
-  height: 350px;
+  // height: 350px;
   color: $bgcBlack;
 }
 #wordOfGod {

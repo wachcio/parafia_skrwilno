@@ -8,7 +8,9 @@
     <TransitionExpand>
       <div class="content" v-show="show.liturgy">
         <p>
-          {{liturgy.liturgy_year}} {{liturgy.period_name}}
+          {{liturgy.liturgy_year}}
+          <br>
+          {{liturgy.period_name}}
           <br>
           Patroni: {{liturgy.patronas}}
           <br>
@@ -94,43 +96,56 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
 h4,
 h5 {
-  margin: 0;
+  width: 100vw;
+  // flex-basis: 100%;
+  // margin: 0 5px;
   // margin-bottom: 10px;
   // margin-left: 5px;
-  padding: 0 10px;
+  padding: 0 0.5em;
   transition: all 0.3s ease-in-out;
   background-color: $bgcBlack;
-  border: $bgcBlack 0 solid;
+  // border: $bgcBlack 0 solid;
   color: $yellow;
   // border-radius: 10px;
   // border-top-left-radius: 10px;
 }
 h4:hover,
 h5:hover {
-  padding-left: 20px;
+  // padding-left: 20px;
   cursor: pointer;
+}
+h5 {
+  font-size: 1.2em !important;
 }
 
 p {
-  padding: 0 20px;
-  margin-left: 5px;
-  margin-right: 5px;
+  width: 100vw;
+  padding: 0 0.5em;
+  // margin-left: 5px;
+  // margin-right: 5px;
   // margin-bottom: 5px;
   display: block;
   text-align: justify;
   color: $bgcBlack;
-  border: $bgcBlack 2px solid;
+  // border: $bgcBlack 2px solid;
   background-color: lighten($bgcBlack, 70%);
 }
 i {
-  float: right;
+  align-self: flex-start;
+  // right: 10%;
   transition: all 0.5s ease-in-out;
   margin-right: 20px;
 }
 .space {
-  height: 15px;
+  height: 0.1em;
 }
 .rotate {
   transform: rotateZ(180deg);

@@ -1,19 +1,17 @@
 <template>
-  <div class="menuWrapper">
-    <AnimateCSS enter="bounceInRightIn" leave="bounceInRightOut" appear="appear">
-      <div class="menu" v-show="menuIsVisible">
-        <div
-          class="item"
-          v-for="(menuItem, index) in menuItems"
-          :key="index"
-          v-scroll-to="{ 
+  <AnimateCSS enter="bounceInRightIn" leave="bounceInRightOut" appear="appear">
+    <div class="menu" v-show="menuIsVisible">
+      <div
+        class="item"
+        v-for="(menuItem, index) in menuItems"
+        :key="index"
+        v-scroll-to="{ 
         el: menuItem.link,
         easing: [.6, .80, .30, 1.9],
         duration: 2000 }"
-        >{{menuItem.text}}</div>
-      </div>
-    </AnimateCSS>
-  </div>
+      >{{menuItem.text}}</div>
+    </div>
+  </AnimateCSS>
 </template>
 
 <script>
@@ -50,22 +48,12 @@ export default {
 
 <style lang="scss" scoped>
 @import "./../css/common.scss";
-.menuWrapper {
-  position: fixed;
-  float: right;
-  //   margin: 0;
-  //   padding: 0;
-  top: 75px;
-  right: 0;
-  z-index: 1000;
-  //   transform: translate(-100%, 0);
-  //   transition: 0.3s all ease-in-out;
-}
+
 .menu {
-  //   position: fixed;
+  position: fixed;
   //   float: right;
-  //   right: 0;
-  //   top: 75px;
+  right: 0;
+  top: 70px;
   font-size: 1.5em;
   //   padding: 15px;
   //   transform: translateX(103%);

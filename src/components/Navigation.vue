@@ -53,6 +53,8 @@ export default {
 @import "./../css/common.scss";
 nav {
   display: flex;
+  width: 100vw;
+  flex-basis: 100%;
   flex-direction: row;
   align-items: center;
   text-align: center;
