@@ -1,16 +1,16 @@
 <template>
   <div id="app">
     <div class="container">
-      <Navigation/>
-      <section id="first"></section>
-      <section id="wordOfGod"></section>
-      <section id="news"></section>
-      <section id="ourChurch"></section>
-      <section id="holyMasses"></section>
-      <section id="clergy"></section>
-      <section id="gallery"></section>
-      <section id="history"></section>
-      <section id="contact"></section>
+      <Navigation :scrolled="scrolled" @setScroll="setScroll"/>
+      <section id="first">Pierwsza</section>
+      <section id="wordOfGod">Słowo Boże</section>
+      <section id="news">Aktualności</section>
+      <section id="ourChurch">Nasz kościół</section>
+      <section id="holyMasses">Msze</section>
+      <section id="clergy">Duchowni</section>
+      <section id="gallery">Galeria</section>
+      <section id="history">Historia</section>
+      <section id="contact">Kontakt</section>
       <footer>
         <h1>Wachcio&copy;2019</h1>
       </footer>
@@ -22,7 +22,31 @@
 import Navigation from "./components/Navigation";
 export default {
   name: "app",
-  components: { Navigation }
+  data() {
+    return {
+      scrolled: false
+    };
+  },
+  methods: {
+    setScroll(val) {
+      this.scrolled = val;
+    },
+    handleScroll() {
+      if (!this.scrolled) {
+        this.scrolled = true;
+      }
+      // this.scrolled = false;
+    }
+  },
+  components: { Navigation },
+  beforeMount() {
+    window.addEventListener("scroll", this.handleScroll);
+    // console.log("scrolling Injected");
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.handleScroll);
+    // console.log("scrolling Destroyed");
+  }
 };
 </script>
 
@@ -61,7 +85,7 @@ footer {
   }
 }
 section {
-  height: 150px;
+  height: 350px;
   color: #222;
 }
 </style>
