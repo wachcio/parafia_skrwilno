@@ -1,0 +1,132 @@
+<template>
+  <div class="wrapper">
+    <h4 @click="show.liturgy = !show.liturgy">
+      Liturgia na dzień {{liturgy.date}} ({{liturgy.weekday_name}})
+      <i :class="arrow(show.liturgy)"></i>
+    </h4>
+
+    <TransitionExpand>
+      <div class="content" v-show="show.liturgy">
+        <p>
+          {{liturgy.liturgy_year}} {{liturgy.period_name}}
+          <br>
+          Patroni: {{liturgy.patronas}}
+          <br>
+          Kolor szaty: {{liturgy.robe}}
+        </p>
+        <h5 @click="show.readingOne = !show.readingOne">
+          Pierwsze czytanie: {{liturgy.reading_one}}
+          <i :class="arrow(show.readingOne)"></i>
+        </h5>
+        <TransitionExpand>
+          <p v-html="liturgy.reading_one_text" v-show="show.readingOne"></p>
+        </TransitionExpand>
+        <h5 @click="show.psalm = !show.psalm">
+          Psalm responsoryjny: {{liturgy.psalm}}
+          <i :class="arrow(show.psalm)"></i>
+        </h5>
+        <TransitionExpand>
+          <p v-html="liturgy.psalm_text" v-show="show.psalm"></p>
+        </TransitionExpand>
+        <h5 @click="show.beforeGospel = !show.beforeGospel">
+          Werset przed ewangelią: {{liturgy.before_gospel}}
+          <i :class="arrow(show.beforeGospel)"></i>
+        </h5>
+        <TransitionExpand>
+          <p v-html="liturgy.before_gospel_text" v-show="show.beforeGospel"></p>
+        </TransitionExpand>
+        <h5 @click="show.gospel = !show.gospel">
+          Ewangelia: {{liturgy.gospel}}
+          <i :class="arrow(show.gospel)"></i>
+        </h5>
+        <TransitionExpand>
+          <p v-html="liturgy.gospel_text" v-show="show.gospel"></p>
+        </TransitionExpand>
+      </div>
+    </TransitionExpand>
+    <div class="space"></div>
+  </div>
+</template>
+
+<script>
+import TransitionExpand from "./TransitionExpand";
+export default {
+  name: "Liturgy",
+  props: {
+    liturgy: null
+  },
+  data() {
+    return {
+      show: {
+        liturgy: false,
+        readingOne: false,
+        gospel: false,
+        psalm: false,
+        beforeGospel: false
+      }
+    };
+  },
+  components: {
+    TransitionExpand
+  },
+  methods: {
+    showHideLiturgy() {
+      this.show.liturgy = !this.show.liturgy;
+    },
+    arrow(element) {
+      if (element == true) {
+        return "icon icon-arrow-up";
+      } else {
+        return "icon icon-arrow-up rotate";
+      }
+    }
+  },
+  computed: {},
+  created() {},
+  watch: {}
+};
+</script>
+
+<style lang="scss" scoped>
+* {
+  margin: 0;
+  padding: 0;
+}
+h4,
+h5 {
+  margin: 0;
+  // margin-bottom: 10px;
+  margin-left: 5px;
+  padding: 0 10px;
+  transition: all 0.3s ease-in-out;
+  background-color: #401c19;
+  border: #401c19 0 solid;
+  // border-radius: 10px;
+  // border-top-left-radius: 10px;
+}
+h4:hover,
+h5:hover {
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+p {
+  padding: 0 20px;
+  margin-left: 5px;
+  // margin-bottom: 5px;
+  display: block;
+  text-align: justify;
+  border: #401d18 2px solid;
+  // background-color: #401d18;
+}
+i {
+  float: right;
+  transition: all 0.5s ease-in-out;
+}
+.space {
+  height: 15px;
+}
+.rotate {
+  transform: rotateZ(180deg);
+}
+</style>
