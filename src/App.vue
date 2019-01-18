@@ -1,24 +1,31 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="container">
+      <nav></nav>
+      <section class="first"></section>
+      <section class="wordOfGod"></section>
+      <section class="news"></section>
+      <section class="ourChurch"></section>
+      <section class="holyMasses"></section>
+      <section class="clergy"></section>
+      <section class="gallery"></section>
+      <section class="history"></section>
+      <section class="contact"></section>
+      <footer>Wachcio&copy;2019</footer>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
+  name: "app",
+  components: {}
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
