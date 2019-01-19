@@ -6,9 +6,18 @@
         <Patron/>
       </section>
       <section id="wordOfGod">
-        <Liturgy v-for="(liturgy, index) in liturgies" :key="index" v-bind:liturgy="liturgy"/>
+        <h1>Słowo Boże</h1>
+        <Liturgy
+          v-for="(liturgy, index) in liturgies"
+          :key="index"
+          :day="index"
+          v-bind:liturgy="liturgy"
+        />
       </section>
-      <section id="news">Aktualności</section>
+      <section id="news">
+        <h1>Aktualności</h1>
+        <News v-for="(item, index) of news" :key="index" :news="item"/>
+      </section>
       <section id="ourChurch">Nasz kościół</section>
       <section id="holyMasses">Msze</section>
       <section id="clergy">Duchowni</section>
@@ -27,15 +36,33 @@ import axios from "axios";
 import Navigation from "./components/Navigation";
 import Patron from "./components/Patron";
 import Liturgy from "./components/Liturgy";
+import News from "./components/News";
 export default {
   name: "app",
   data() {
     return {
       scrolled: false,
-      liturgies: ""
+      liturgies: "",
+      news: [
+        {
+          title: "Wydarzenie parafialne 1",
+          text:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec libero nunc. Curabitur et erat a massa convallis scelerisque ac sit amet elit. Nunc id ante ac tortor pharetra convallis nec non neque. Suspendisse mi libero, faucibus eget augue non, pulvinar luctus sapien. Praesent efficitur scelerisque purus, eget fringilla tortor rhoncus in. Etiam vestibulum eu arcu et varius. Aenean eget dui id sapien ullamcorper euismod in vitae nunc."
+        },
+        {
+          title: "Wydarzenie parafialne 2",
+          text:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec libero nunc. Curabitur et erat a massa convallis scelerisque ac sit amet elit. Nunc id ante ac tortor pharetra convallis nec non neque. Suspendisse mi libero, faucibus eget augue non, pulvinar luctus sapien. Praesent efficitur scelerisque purus, eget fringilla tortor rhoncus in. Etiam vestibulum eu arcu et varius. Aenean eget dui id sapien ullamcorper euismod in vitae nunc."
+        },
+        {
+          title: "Wydarzenie parafialne 3",
+          text:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec libero nunc. Curabitur et erat a massa convallis scelerisque ac sit amet elit. Nunc id ante ac tortor pharetra convallis nec non neque. Suspendisse mi libero, faucibus eget augue non, pulvinar luctus sapien. Praesent efficitur scelerisque purus, eget fringilla tortor rhoncus in. Etiam vestibulum eu arcu et varius. Aenean eget dui id sapien ullamcorper euismod in vitae nunc."
+        }
+      ]
     };
   },
-  components: { Navigation, Patron, Liturgy },
+  components: { Navigation, Patron, Liturgy, News },
   methods: {
     setScroll(val) {
       this.scrolled = val;
@@ -46,7 +73,7 @@ export default {
       }
       // this.scrolled = false;
     },
-    getData() {
+    getLiturgies() {
       axios
         .get("http://wachcio.pl/kosciol/API/liturgyCallendar.php")
         .then(response => {
@@ -58,14 +85,14 @@ export default {
             this.liturgies.sunday = null;
           }
           if (this.liturgies.tomorrow.weekday_name == "niedziela") {
-            this.liturgies.sunday = null;
+            this.liturgies.tomorrow = null;
           }
         });
     }
   },
 
   created() {
-    this.getData();
+    this.getLiturgies();
   },
   beforeMount() {
     window.addEventListener("scroll", this.handleScroll);
@@ -84,7 +111,7 @@ section {
   // height: 350px;
   color: $bgcBlack;
 }
-#wordOfGod {
-  height: auto;
+h1 {
+  text-align: center;
 }
 </style>

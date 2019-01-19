@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       menuItems: [
-        { text: "Słowo Boże na dziś", link: "#wordOfGod" },
+        { text: "Słowo Boże", link: "#wordOfGod" },
         { text: "Aktualności", link: "#news" },
         { text: "Nasz parafia", link: "#ourChurch" },
         { text: "Msze święte", link: "#holyMasses" },
@@ -58,7 +58,7 @@ export default {
   //   padding: 15px;
   //   transform: translateX(103%);
   z-index: 1000;
-
+  font-size: 1.1em;
   background-color: $bgcBlack;
   & .item {
     border-bottom: 1px solid $yellow;

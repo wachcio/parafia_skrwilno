@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <h4 @click="show.liturgy = !show.liturgy">
-      Liturgia na dzień {{liturgy.date}} ({{liturgy.weekday_name}})
+      {{checkDay}}
       <i :class="arrow(show.liturgy)"></i>
     </h4>
 
@@ -55,7 +55,8 @@ import TransitionExpand from "./TransitionExpand";
 export default {
   name: "Liturgy",
   props: {
-    liturgy: null
+    liturgy: null,
+    day: null
   },
   data() {
     return {
@@ -83,7 +84,25 @@ export default {
       }
     }
   },
-  computed: {},
+  computed: {
+    checkDay() {
+      let result = "";
+      if (this.day == "today") {
+        result = `Liturgia na dziś ${this.liturgy.date} (${
+          this.liturgy.weekday_name
+        })`;
+      }
+      if (this.day == "tomorrow") {
+        result = `Liturgia na jutro ${this.liturgy.date} (${
+          this.liturgy.weekday_name
+        })`;
+      }
+      if (this.day == "sunday") {
+        result = `Liturgia na niedzielę ${this.liturgy.date}`;
+      }
+      return result;
+    }
+  },
   created() {},
   watch: {}
 };
