@@ -144,6 +144,10 @@ h5:hover {
 h5 {
   font-size: 1.2em !important;
 }
+h4 {
+  display: flex;
+  justify-content: flex-start;
+}
 
 p {
   width: 100vw;
@@ -157,11 +161,28 @@ p {
   // border: $bgcBlack 2px solid;
   background-color: lighten($bgcBlack, 70%);
 }
+.titleWrapper {
+  // display: flex;
+  // flex-direction: row-reverse;
+  // justify-content: flex-start;
+  // width: 100%;
+}
 i {
-  align-self: flex-start;
+  // align-self: flex-start;
   // right: 10%;
+  // padding: 0 1em;
+  // position: absolute;
+  // color: $yellow;
+  // background-color: $bgcBlack;
+  // left: 1em;
+  // top: 0;
   transition: all 0.5s ease-in-out;
-  margin-right: 20px;
+  margin-right: 1em;
+  margin-left: 0.5em;
+  // width: 100%;
+  // float: right;
+
+  align-self: center;
 }
 .space {
   height: 0.1em;
