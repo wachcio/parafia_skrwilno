@@ -1,0 +1,7 @@
+@mixin background($image, $positionX, $positionY) {
+   background-repeat: no-repeat;
+   background-origin: padding-box;
+   background-size: cover;
+   background-image: url($image);
+   background-position: $positionX $positionY;
+}
