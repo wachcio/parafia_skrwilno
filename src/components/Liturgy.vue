@@ -185,7 +185,7 @@ i {
   align-self: center;
 }
 .space {
-  height: 0.1em;
+  // height: 0.1em;
 }
 .rotate {
   transform: rotateZ(180deg);

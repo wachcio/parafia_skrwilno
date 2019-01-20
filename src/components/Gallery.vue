@@ -4,8 +4,10 @@
       :options="fluxOptions"
       :images="fluxImages"
       :transitions="fluxTransitions"
+      :captions="fluxCaptions"
       ref="slider"
     >
+      <flux-caption slot="caption"></flux-caption>
       <flux-controls slot="controls"></flux-controls>
       <flux-pagination slot="pagination"></flux-pagination>
     </vue-flux>
@@ -13,7 +15,13 @@
 </template>
 
 <script>
-import { VueFlux, FluxPagination, FluxControls, Transitions } from "vue-flux";
+import {
+  VueFlux,
+  FluxPagination,
+  FluxControls,
+  FluxCaption,
+  Transitions
+} from "vue-flux";
 export default {
   name: "Gallery",
   props: {},
@@ -27,13 +35,13 @@ export default {
         "http://wachcio.pl/parafia_skrwilno/img/kosciol1.jpg",
         "http://wachcio.pl/parafia_skrwilno/img/kosciol2.jpg"
       ],
-      fluxCaptions: ["", ""],
+      fluxCaptions: ["Opis 1", "Opis 2"],
       fluxTransitions: {
         transitionRound2: Transitions.transitionRound2
       }
     };
   },
-  components: { VueFlux, FluxPagination, FluxControls },
+  components: { VueFlux, FluxPagination, FluxControls, FluxCaption },
   methods: {},
   computed: {},
   created() {},
@@ -65,4 +73,9 @@ p {
   text-align: center;
   font-size: 1.5em;
 }
+
+.vue-flux .flux-pagination li.active span.pagination-item {
+  background-color: $yellow !important;
+}
 </style>
+

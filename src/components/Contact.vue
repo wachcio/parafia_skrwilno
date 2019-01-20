@@ -14,7 +14,7 @@
         <textarea name="message" id="message" rows="5" cols="27"></textarea>
       </div>
       <div class="buttonWrapper">
-        <button type="submit">Wyślij</button>
+        <button type="submit" @click.prevent>Wyślij</button>
       </div>
     </form>
   </div>
@@ -45,9 +45,11 @@ export default {
   width: 100%;
   padding-bottom: 2em;
 
-  height: calc(100vh - 75px);
-
   @include background("./../assets/antique-black-call-1416530.jpg", 50%, 20%);
+  height: calc(100vh - 75px);
+  @media (orientation: landscape) {
+    height: calc(100vw - 75px);
+  }
 }
 .labelWrapper {
   display: flex;

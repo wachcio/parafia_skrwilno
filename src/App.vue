@@ -174,8 +174,18 @@ section {
   align-items: center;
 
   & h1 {
-    margin: 0.3em 0;
+    margin: 0;
     padding: 0;
+    // @include buttonGradient();
+    // width: 100%;
+    // text-align: center;
   }
 }
+
+// section .wrapper {
+//   height: calc(100vh - 75px);
+//   @media (orientation: landscape) {
+//     height: calc(100vw - 75px);
+//   }
+// }
 </style>

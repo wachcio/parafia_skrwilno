@@ -6,7 +6,7 @@
         <div class="newsText" v-html="fullNews?news.text:shortenTheNews(news.text)"></div>
 
         <div class="moreWrapper">
-          <button class="more" @click="fullNews=!fullNews">Więcej...</button>
+          <button class="more" @click="fullNews=!fullNews" v-text="fullNews?'Mniej...':'Więcej...'"></button>
         </div>
       </div>
     </div>
