@@ -3,29 +3,60 @@
     <form id="contact">
       <div class="labelWrapper">
         <label for="email">Twój e-mail</label>
-        <input type="email" name="email" id="email" v-model="email">
+        <input
+          class="email"
+          type="email"
+          name="email"
+          id="email"
+          v-model="email"
+          @input="$v.email.$touch()"
+          :class="{'error':$v.email.$dirty && $v.email.$invalid}"
+        >
+        <div class="errorMessage" v-if="$v.email.$dirty && $v.email.$invalid">Podaj poprawny e-mail.</div>
       </div>
       <div class="labelWrapper">
         <label for="name">Nazwisko i imię</label>
-        <input type="text" name="name" id="name" v-model="name">
+        <input
+          class="name"
+          type="text"
+          name="name"
+          id="name"
+          v-model="name"
+          @input="$v.name.$touch()"
+          :class="{'error':$v.name.$dirty && $v.name.$invalid}"
+        >
+        <div
+          class="errorMessage"
+          v-if="$v.name.$dirty && $v.name.$invalid"
+        >Pole powinno mieć conajmniej {{$v.name.$params.minLength.min}} znaków.</div>
       </div>
       <div class="labelWrapper">
         <label for="message">Wiadomość</label>
-        <textarea name="message" id="message" rows="5" cols="27" v-model="message"></textarea>
+        <textarea
+          class="message"
+          name="message"
+          id="message"
+          rows="5"
+          cols="27"
+          v-model="message"
+          @input="$v.message.$touch()"
+          :class="{'error':$v.message.$dirty && $v.message.$invalid}"
+        ></textarea>
+        <div
+          class="errorMessage"
+          v-if="$v.message.$dirty && $v.message.$invalid"
+        >Wiadomość powinna mieć conajmniej {{$v.message.$params.minLength.min}} znaków.</div>
       </div>
       <div class="buttonWrapper">
-        <button type="submit" @click.prevent :disabled="error">Wyślij</button>
+        <button type="submit" @click.prevent :disabled="$v.$invalid">Wyślij</button>
       </div>
     </form>
-    <div class="error" v-if="error">{{errorMessage}}</div>
   </div>
 </template>
 
 <script>
 import { validationMixin } from "vuelidate";
-import required from "vuelidate/lib/validators/required";
-import minLength from "vuelidate/lib/validators/minLength";
-import email from "vuelidate/lib/validators/email";
+import { required, minLength, email } from "vuelidate/lib/validators";
 
 export default {
   name: "Contact",
@@ -35,7 +66,7 @@ export default {
       name: "",
       email: "",
       message: "",
-      error: false,
+      error: "",
       errorMessage: "Błąd w formularzu!"
     };
   },
@@ -46,7 +77,7 @@ export default {
     },
     name: {
       required,
-      minLength: minLength(4)
+      minLength: minLength(5)
     },
     message: {
       required,
@@ -57,7 +88,9 @@ export default {
   methods: {},
   computed: {},
   mixins: [validationMixin],
-  created() {},
+  created() {
+    this.error = this.$v.$invalid;
+  },
   watch: {}
 };
 </script>
@@ -79,6 +112,9 @@ export default {
   @media (orientation: landscape) {
     height: calc(100vw - 75px);
   }
+}
+form {
+  margin-top: 0.5em;
 }
 .labelWrapper {
   display: flex;
@@ -136,5 +172,10 @@ button {
   &:disabled {
     opacity: 0.3;
   }
+}
+.error {
+  border: 2px solid red;
+  border-radius: 1em;
+  border-bottom-right-radius: 0;
 }
 </style>
