@@ -9,9 +9,7 @@
         </TransitionExpand>
       </section>
       <section id="wordOfGod">
-        <div class="h1Wrapper">
-          <h1>Słowo Boże</h1>
-        </div>
+        <MainTitle>Słowo Boże</MainTitle>
         <Liturgy
           v-for="(liturgy, index) in liturgies"
           :key="index"
@@ -20,46 +18,32 @@
         />
       </section>
       <section id="news">
-        <div class="h1Wrapper">
-          <h1>Aktualności</h1>
-        </div>
+        <MainTitle>Aktualności</MainTitle>
 
         <News v-for="(item, index) of news" :key="index" :news="item"/>
       </section>
       <section id="ourChurch">
-        <div class="h1Wrapper">
-          <h1>Nasz kościół</h1>
-        </div>
+        <MainTitle>Nasz kościół</MainTitle>
         <OurChurch/>
       </section>
       <section id="holyMasses">
-        <div class="h1Wrapper">
-          <h1>Msze święte</h1>
-        </div>
+        <MainTitle>Msze święte</MainTitle>
         <HolyMasses/>
       </section>
       <section id="clergy">
-        <div class="h1Wrapper">
-          <h1>Duchowni</h1>
-        </div>
+        <MainTitle>Duchowni</MainTitle>
         <Clergy/>
       </section>
       <section id="gallery">
-        <div class="h1Wrapper">
-          <h1>Galeria</h1>
-        </div>
+        <MainTitle>Galeria</MainTitle>
         <Gallery/>
       </section>
       <section id="history">
-        <div class="h1Wrapper">
-          <h1>Rys historyczny</h1>
-        </div>
+        <MainTitle>Rys historyczny</MainTitle>
         <History/>
       </section>
       <section id="contact">
-        <div class="h1Wrapper">
-          <h1>Kontakt</h1>
-        </div>
+        <MainTitle>Kontakt</MainTitle>
         <Contact/>
       </section>
       <footer>
@@ -82,6 +66,7 @@ import Clergy from "./components/Clergy";
 import Gallery from "./components/Gallery";
 import History from "./components/History";
 import Contact from "./components/Contact";
+import MainTitle from "./components/MainTitle";
 export default {
   name: "app",
   data() {
@@ -118,7 +103,8 @@ export default {
     Clergy,
     Gallery,
     History,
-    Contact
+    Contact,
+    MainTitle
   },
   methods: {
     setScroll(val) {
@@ -168,19 +154,19 @@ section {
   // height: 350px;
   color: $bgcBlack;
 }
-.h1Wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+// .h1Wrapper {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
 
-  & h1 {
-    margin: 0;
-    padding: 0;
-    // @include buttonGradient();
-    // width: 100%;
-    // text-align: center;
-  }
-}
+//   & h1 {
+//     margin: 0;
+//     padding: 0;
+//     // @include buttonGradient();
+//     // width: 100%;
+//     // text-align: center;
+//   }
+// }
 
 // section .wrapper {
 //   height: calc(100vh - 75px);
