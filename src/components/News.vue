@@ -3,7 +3,8 @@
     <div class="wrapper">
       <div class="title">{{news.title}}</div>
       <div class="news">
-        <div class="newsText" v-html="fullNews?news.text:shortenTheNews(news.text, 30)"></div>
+        <div class="newsText" v-html="fullNews?news.text:shortenTheNews(news.text)"></div>
+
         <div class="moreWrapper">
           <button class="more" @click="fullNews=!fullNews">Więcej...</button>
         </div>
@@ -18,23 +19,49 @@ export default {
   props: { news: Object },
   data() {
     return {
-      fullNews: false
+      fullNews: false,
+      numberOfWords: 30,
+      shortNews: ""
     };
   },
   components: {},
   methods: {
-    shortenTheNews(text, words) {
+    shortenTheNews(text) {
       return (
         text
           .split(" ")
-          .slice(0, words)
+          .slice(0, this.numberOfWords)
           .join(" ") + "..."
       );
     }
+    // numberLethersToEnd(text, words) {
+    //   return text
+    //     .split(" ")
+    //     .slice(0, words)
+    //     .join(" ").length;
+    // },
+    // shortenToFullNews(text, words) {
+    //   //   this.numberLethersToEnd(text, words);
+    //   //   console.log(this.numberLethersToEnd(text, words));
+    //   //   console.log(text);
+
+    //   for (let i = this.numberLethersToEnd(text, words); i < text.length; i++) {
+    //     // console.log(news.text);
+    //     this.shortNews += text[i];
+    //   }
+    // }
   },
   computed: {},
-  created() {},
-  watch: {}
+  created() {
+    // this.shortenTheNews(this.news.text, this.words);
+  },
+  watch: {
+    // fullNews(val) {
+    //   if (val) {
+    //     this.shortenToFullNews(this.news.text, this.words);
+    //   }
+    // }
+  }
 };
 </script>
 

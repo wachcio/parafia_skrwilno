@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" v-if="liturgy">
     <h4 @click="show.liturgy = !show.liturgy">
       {{checkDay}}
       <i :class="arrow(show.liturgy)"></i>

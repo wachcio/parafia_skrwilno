@@ -4,9 +4,14 @@
       <Navigation :scrolled="scrolled" @setScroll="setScroll"/>
       <section id="patron">
         <Patron/>
+        <TransitionExpand>
+          <div></div>
+        </TransitionExpand>
       </section>
       <section id="wordOfGod">
-        <h1>Słowo Boże</h1>
+        <div class="h1Wrapper">
+          <h1>Słowo Boże</h1>
+        </div>
         <Liturgy
           v-for="(liturgy, index) in liturgies"
           :key="index"
@@ -15,15 +20,46 @@
         />
       </section>
       <section id="news">
-        <h1>Aktualności</h1>
+        <div class="h1Wrapper">
+          <h1>Aktualności</h1>
+        </div>
+
         <News v-for="(item, index) of news" :key="index" :news="item"/>
       </section>
-      <section id="ourChurch">Nasz kościół</section>
-      <section id="holyMasses">Msze</section>
-      <section id="clergy">Duchowni</section>
-      <section id="gallery">Galeria</section>
-      <section id="history">Historia</section>
-      <section id="contact">Kontakt</section>
+      <section id="ourChurch">
+        <div class="h1Wrapper">
+          <h1>Nasz kościół</h1>
+        </div>
+        <OurChurch/>
+      </section>
+      <section id="holyMasses">
+        <div class="h1Wrapper">
+          <h1>Msze święte</h1>
+        </div>
+        <HolyMasses/>
+      </section>
+      <section id="clergy">
+        <div class="h1Wrapper">
+          <h1>Duchowni</h1>
+        </div>
+        <Clergy/>
+      </section>
+      <section id="gallery">
+        <div class="h1Wrapper">
+          <h1>Galeria</h1>
+          <Gallery/>
+        </div>
+      </section>
+      <section id="history">
+        <div class="h1Wrapper">
+          <h1>Historia</h1>
+        </div>
+      </section>
+      <section id="contact">
+        <div class="h1Wrapper">
+          <h1>Kontakt</h1>
+        </div>
+      </section>
       <footer>
         <h1>Wachcio&copy;2019</h1>
       </footer>
@@ -37,6 +73,11 @@ import Navigation from "./components/Navigation";
 import Patron from "./components/Patron";
 import Liturgy from "./components/Liturgy";
 import News from "./components/News";
+import OurChurch from "./components/OurChurch";
+import TransitionExpand from "./components/TransitionExpand";
+import HolyMasses from "./components/HolyMasses";
+import Clergy from "./components/Clergy";
+import Gallery from "./components/Gallery";
 export default {
   name: "app",
   data() {
@@ -62,7 +103,17 @@ export default {
       ]
     };
   },
-  components: { Navigation, Patron, Liturgy, News },
+  components: {
+    Navigation,
+    Patron,
+    Liturgy,
+    News,
+    OurChurch,
+    TransitionExpand,
+    HolyMasses,
+    Clergy,
+    Gallery
+  },
   methods: {
     setScroll(val) {
       this.scrolled = val;
@@ -111,7 +162,14 @@ section {
   // height: 350px;
   color: $bgcBlack;
 }
-h1 {
-  text-align: center;
+.h1Wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & h1 {
+    margin: 0.3em 0;
+    padding: 0;
+  }
 }
 </style>
