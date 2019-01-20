@@ -73,6 +73,7 @@ export default {
     return {
       scrolled: false,
       liturgies: "",
+
       news: [
         {
           title: "Wydarzenie parafialne 1",
@@ -131,6 +132,14 @@ export default {
             this.liturgies.tomorrow = null;
           }
         });
+    },
+    shortenTheNews(text) {
+      return (
+        text
+          .split(" ")
+          .slice(0, this.numberOfWords)
+          .join(" ") + "..."
+      );
     }
   },
 

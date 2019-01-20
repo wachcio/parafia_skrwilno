@@ -3,7 +3,9 @@
     <div class="wrapper">
       <div class="title">{{news.title}}</div>
       <div class="news">
-        <div class="newsText" v-html="fullNews?news.text:shortenTheNews(news.text)"></div>
+        <TransitionExpand>
+          <div class="newsText" v-html="fullNews?news.text:shortenTheNews(news.text)"></div>
+        </TransitionExpand>
 
         <div class="moreWrapper">
           <button class="more" @click="fullNews=!fullNews" v-text="fullNews?'Mniej...':'Więcej...'"></button>
@@ -14,6 +16,7 @@
 </template>
 
 <script>
+import TransitionExpand from "./TransitionExpand";
 export default {
   name: "News",
   props: { news: Object },
@@ -24,7 +27,7 @@ export default {
       shortNews: ""
     };
   },
-  components: {},
+  components: { TransitionExpand },
   methods: {
     shortenTheNews(text) {
       return (

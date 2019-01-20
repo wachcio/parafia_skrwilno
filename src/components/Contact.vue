@@ -107,10 +107,10 @@ export default {
   color: #fff;
 
   @include background("./../assets/antique-black-call-1416530.jpg", 50%, 20%);
-  height: calc(100vh - 75px);
+  min-height: calc(100vh - 75px);
 
   @media (orientation: landscape) {
-    height: calc(100vw - 75px);
+    min-height: calc(100vw - 75px);
   }
 }
 form {
@@ -177,5 +177,8 @@ button {
   border: 2px solid red;
   border-radius: 1em;
   border-bottom-right-radius: 0;
+}
+.errorMessage {
+  color: red;
 }
 </style>
