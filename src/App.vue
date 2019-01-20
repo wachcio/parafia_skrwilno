@@ -47,18 +47,20 @@
       <section id="gallery">
         <div class="h1Wrapper">
           <h1>Galeria</h1>
-          <Gallery/>
         </div>
+        <Gallery/>
       </section>
       <section id="history">
         <div class="h1Wrapper">
-          <h1>Historia</h1>
+          <h1>Rys historyczny</h1>
         </div>
+        <History/>
       </section>
       <section id="contact">
         <div class="h1Wrapper">
           <h1>Kontakt</h1>
         </div>
+        <Contact/>
       </section>
       <footer>
         <h1>Wachcio&copy;2019</h1>
@@ -78,6 +80,8 @@ import TransitionExpand from "./components/TransitionExpand";
 import HolyMasses from "./components/HolyMasses";
 import Clergy from "./components/Clergy";
 import Gallery from "./components/Gallery";
+import History from "./components/History";
+import Contact from "./components/Contact";
 export default {
   name: "app",
   data() {
@@ -112,7 +116,9 @@ export default {
     TransitionExpand,
     HolyMasses,
     Clergy,
-    Gallery
+    Gallery,
+    History,
+    Contact
   },
   methods: {
     setScroll(val) {
