@@ -101,7 +101,7 @@ export default {
     },
     getLiturgies() {
       axios
-        .get("http://wachcio.pl/kosciol/API/liturgyCallendar.php")
+        .get("http://wachcio.pl/parafia_skrwilno/API/liturgyCallendar.php")
         .then(response => {
           // handle success
           // console.log(response);
