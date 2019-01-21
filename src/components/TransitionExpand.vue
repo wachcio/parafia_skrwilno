@@ -1,11 +1,12 @@
 <template>
   <transition name="expand" @enter="enter" @after-enter="afterEnter" @leave="leave">
-    <slot/>
+    <slot :item="item"/>
   </transition>
 </template>
 <script>
 export default {
   name: "TransitionExpand",
+  props: { item: Object },
   methods: {
     enter(element) {
       const width = getComputedStyle(element).width;

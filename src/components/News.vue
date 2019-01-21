@@ -1,68 +1,104 @@
 <template>
   <div class="container">
-    <div class="wrapper">
-      <div class="title">{{news.title}}</div>
-      <div class="news">
-        <TransitionExpand>
-          <div class="newsText" v-html="fullNews?news.text:shortenTheNews(news.text)"></div>
-        </TransitionExpand>
+    <div class="wrapper" v-for="(item, index) of news" :key="index">
+      <TransitionExpand :item="item">
+        <div v-if="index<numberOfNews">
+          <div class="title">{{item.title}}</div>
+          <div class="news">
+            <div class="newsText" v-html="fullNews[index]?item.text:shortenTheNews2(index)"></div>
 
-        <div class="moreWrapper">
-          <button class="more" @click="fullNews=!fullNews" v-text="fullNews?'Mniej...':'Więcej...'"></button>
+            <div class="moreWrapper">
+              <button
+                class="more"
+                @click="changeFullShort(index)"
+                v-text="fullNews[index]?'Mniej...':'Więcej...'"
+              ></button>
+            </div>
+          </div>
         </div>
-      </div>
+      </TransitionExpand>
     </div>
   </div>
 </template>
 
 <script>
+import Vue from "vue";
 import TransitionExpand from "./TransitionExpand";
 export default {
   name: "News",
-  props: { news: Object },
+  props: {},
   data() {
     return {
-      fullNews: false,
       numberOfWords: 30,
-      shortNews: ""
+      numberOfNews: 2,
+      fullNews: [],
+      news: [
+        {
+          title: "Wydarzenie parafialne 1",
+          text:
+            "Lorem ipsum dolor sit amet, <b>scelerisque</b> consectetur adipiscing elit. Pellentesque nec libero nunc. Curabitur et <i> a massa convallis</i> <h5>scelerisque ac sit amet elit. Nunc id ante ac tortor pharetra convallis nec non neque.</h5> Suspendisse mi libero, faucibus eget augue non, pulvinar luctus sapien. Praesent efficitur  purus, eget fringilla tortor rhoncus in. Etiam vestibulum eu arcu et varius. Aenean eget dui id sapien ullamcorper euismod in vitae nunc."
+        },
+        {
+          title: "Wydarzenie parafialne 2",
+          text:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec libero nunc. Curabitur et erat a massa convallis scelerisque ac sit amet elit. Nunc id ante ac tortor pharetra convallis nec non neque. Suspendisse mi libero, faucibus eget augue non, pulvinar luctus sapien. Praesent efficitur scelerisque purus, eget fringilla tortor rhoncus in. Etiam vestibulum eu arcu et varius. Aenean eget dui id sapien ullamcorper euismod in vitae nunc."
+        },
+        {
+          title: "Wydarzenie parafialne 3",
+          text:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec libero nunc. Curabitur et erat a massa convallis scelerisque ac sit amet elit. Nunc id ante ac tortor pharetra convallis nec non neque. Suspendisse mi libero, faucibus eget augue non, pulvinar luctus sapien. Praesent efficitur scelerisque purus, eget fringilla tortor rhoncus in. Etiam vestibulum eu arcu et varius. Aenean eget dui id sapien ullamcorper euismod in vitae nunc."
+        }
+      ]
     };
   },
   components: { TransitionExpand },
   methods: {
-    shortenTheNews(text) {
+    shortenTheNews() {
+      for (let item of this.news) {
+        // console.log(item);
+
+        item.shortText =
+          item.text
+            .split(" ")
+            .slice(0, this.numberOfWords)
+            .join(" ") + "...";
+      }
+    },
+    shortenTheNews2(index) {
+      // for (let item of this.news) {
+      // console.log(item);
+
       return (
-        text
+        this.news[index].text
           .split(" ")
           .slice(0, this.numberOfWords)
           .join(" ") + "..."
       );
+    },
+    fillFullNews() {
+      for (let i = 0; i < this.news.length; i++) {
+        // this.fullNews = false;
+        // Vue.set(this.news[i].fullNews, i, false);
+        this.fullNews.push(false);
+      }
+    },
+    changeFullShort(i) {
+      if (this.fullNews[i]) {
+        Vue.set(this.fullNews, i, false);
+        // this.shortenTheNews2(i);
+      } else {
+        Vue.set(this.fullNews, i, true);
+      }
     }
-    // numberLethersToEnd(text, words) {
-    //   return text
-    //     .split(" ")
-    //     .slice(0, words)
-    //     .join(" ").length;
-    // },
-    // shortenToFullNews(text, words) {
-    //   //   this.numberLethersToEnd(text, words);
-    //   //   console.log(this.numberLethersToEnd(text, words));
-    //   //   console.log(text);
-
-    //   for (let i = this.numberLethersToEnd(text, words); i < text.length; i++) {
-    //     // console.log(news.text);
-    //     this.shortNews += text[i];
-    //   }
-    // }
   },
   computed: {},
   created() {
-    // this.shortenTheNews(this.news.text, this.words);
+    // this.shortenTheNews();
+    this.fillFullNews();
   },
   watch: {
-    // fullNews(val) {
-    //   if (val) {
-    //     this.shortenToFullNews(this.news.text, this.words);
-    //   }
+    // numberOfWords: function() {
+    //   this.shortenTheNews();
     // }
   }
 };

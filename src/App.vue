@@ -20,7 +20,7 @@
       <section id="news">
         <MainTitle>Aktualności</MainTitle>
 
-        <News v-for="(item, index) of news" :key="index" :news="item"/>
+        <News/>
       </section>
       <section id="ourChurch">
         <MainTitle>Nasz kościół</MainTitle>
@@ -72,25 +72,7 @@ export default {
   data() {
     return {
       scrolled: false,
-      liturgies: "",
-
-      news: [
-        {
-          title: "Wydarzenie parafialne 1",
-          text:
-            "Lorem ipsum dolor sit amet, <b>scelerisque</b> consectetur adipiscing elit. Pellentesque nec libero nunc. Curabitur et <i> a massa convallis</i> <h5>scelerisque ac sit amet elit. Nunc id ante ac tortor pharetra convallis nec non neque.</h5> Suspendisse mi libero, faucibus eget augue non, pulvinar luctus sapien. Praesent efficitur  purus, eget fringilla tortor rhoncus in. Etiam vestibulum eu arcu et varius. Aenean eget dui id sapien ullamcorper euismod in vitae nunc."
-        },
-        {
-          title: "Wydarzenie parafialne 2",
-          text:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec libero nunc. Curabitur et erat a massa convallis scelerisque ac sit amet elit. Nunc id ante ac tortor pharetra convallis nec non neque. Suspendisse mi libero, faucibus eget augue non, pulvinar luctus sapien. Praesent efficitur scelerisque purus, eget fringilla tortor rhoncus in. Etiam vestibulum eu arcu et varius. Aenean eget dui id sapien ullamcorper euismod in vitae nunc."
-        },
-        {
-          title: "Wydarzenie parafialne 3",
-          text:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec libero nunc. Curabitur et erat a massa convallis scelerisque ac sit amet elit. Nunc id ante ac tortor pharetra convallis nec non neque. Suspendisse mi libero, faucibus eget augue non, pulvinar luctus sapien. Praesent efficitur scelerisque purus, eget fringilla tortor rhoncus in. Etiam vestibulum eu arcu et varius. Aenean eget dui id sapien ullamcorper euismod in vitae nunc."
-        }
-      ]
+      liturgies: ""
     };
   },
   components: {
@@ -132,16 +114,9 @@ export default {
             this.liturgies.tomorrow = null;
           }
         });
-    },
-    shortenTheNews(text) {
-      return (
-        text
-          .split(" ")
-          .slice(0, this.numberOfWords)
-          .join(" ") + "..."
-      );
     }
   },
+  watch: {},
 
   created() {
     this.getLiturgies();
