@@ -63,6 +63,7 @@ foreach($html->find('div.kolor_szat div.dwa') as $r)
 fillData("today", "https://opoka.org.pl/liturgia/");
 fillData("tomorrow", "https://opoka.org.pl/liturgia/tomorrow/");
 fillData("sunday", "https://opoka.org.pl/liturgia/sunday/");
+fillData("yesterday", "https://opoka.org.pl/liturgia/yesterday/");
 
 
 
