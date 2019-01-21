@@ -1,6 +1,6 @@
 <template>
   <transition name="expand" @enter="enter" @after-enter="afterEnter" @leave="leave">
-    <slot :item="item"/>
+    <slot/>
   </transition>
 </template>
 <script>

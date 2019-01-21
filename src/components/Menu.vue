@@ -1,6 +1,6 @@
 <template>
   <AnimateCSS enter="bounceInRightIn" leave="bounceInRightOut" appear="appear">
-    <div class="menu" v-show="menuIsVisible">
+    <div class="menuWrapper" v-show="menuIsVisible">
       <div
         class="item"
         v-for="(menuItem, index) in menuItems"
@@ -49,29 +49,27 @@ export default {
 <style lang="scss" scoped>
 @import "./../css/common.scss";
 
-.menu {
+.menuWrapper {
   position: fixed;
-  //   float: right;
   right: 0;
   top: 70px;
-  font-size: 1.5em;
-  //   padding: 15px;
-  //   transform: translateX(103%);
   z-index: 1000;
   font-size: 1.1em;
   background-color: $bgcBlack;
   & .item {
     border-bottom: 1px solid $yellow;
-    // margin: 15px;
-    padding: 15px;
-    transition: all 0.3s ease-in-out;
+    padding: 0.6em;
+    @media (orientation: landscape) {
+      padding: 0.3em;
+    }
+    transition: background-color 0.3s ease-in-out;
     &:hover {
       color: $bgcBlack;
       background-color: $yellow;
       cursor: pointer;
-      //   &::before {
-      //     content: ">";
-      //   }
+    }
+    &:last-child {
+      border-bottom: 0;
     }
   }
 }

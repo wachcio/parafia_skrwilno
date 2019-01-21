@@ -3,9 +3,9 @@
     <div class="wrapper" v-for="(item, index) of news" :key="index">
       <TransitionExpand>
         <div class="wrapper2" v-if="index<numberOfNews">
-          <div class="title">{{item.title}}</div>
+          <div class="title">{{item.title}} ({{item.date}})</div>
           <div class="news">
-            <div class="newsText" v-html="fullNews[index]?item.text:shortenTheNews2(index)"></div>
+            <div class="newsText" v-html="fullNews[index]?item.text:shortenTheNews(index)"></div>
 
             <div class="moreWrapper">
               <button
@@ -27,7 +27,8 @@
 <script>
 import Vue from "vue";
 import TransitionExpand from "./TransitionExpand";
-import JSON from "./data.json";
+// import JSON from "./data.json";
+import axios from "axios";
 export default {
   name: "News",
   props: {},
@@ -36,26 +37,12 @@ export default {
       numberOfWords: 30,
       numberOfNews: 3,
       fullNews: [],
-      news: JSON
+      news: []
     };
   },
   components: { TransitionExpand },
   methods: {
-    shortenTheNews() {
-      for (let item of this.news) {
-        // console.log(item);
-
-        item.shortText =
-          item.text
-            .split(" ")
-            .slice(0, this.numberOfWords)
-            .join(" ") + "...";
-      }
-    },
-    shortenTheNews2(index) {
-      // for (let item of this.news) {
-      // console.log(item);
-
+    shortenTheNews(index) {
       return (
         this.news[index].text
           .split(" ")
@@ -65,30 +52,32 @@ export default {
     },
     fillFullNews() {
       for (let i = 0; i < this.news.length; i++) {
-        // this.fullNews = false;
-        // Vue.set(this.news[i].fullNews, i, false);
         this.fullNews.push(false);
       }
     },
     changeFullShort(i) {
       if (this.fullNews[i]) {
         Vue.set(this.fullNews, i, false);
-        // this.shortenTheNews2(i);
       } else {
         Vue.set(this.fullNews, i, true);
       }
+    },
+    getNews() {
+      axios
+        .get("http://wachcio.pl/parafia_skrwilno/API/news.php")
+        .then(response => {
+          // handle success
+          // console.log(response);
+          this.news = response.data;
+          this.fillFullNews();
+        });
     }
   },
   computed: {},
   created() {
-    // this.shortenTheNews();
-    this.fillFullNews();
+    this.getNews();
   },
-  watch: {
-    // numberOfWords: function() {
-    //   this.shortenTheNews();
-    // }
-  }
+  watch: {}
 };
 </script>
 
