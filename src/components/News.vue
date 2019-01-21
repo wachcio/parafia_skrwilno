@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <div class="wrapper" v-for="(item, index) of news" :key="index">
-      <TransitionExpand :item="item">
-        <div v-if="index<numberOfNews">
+      <TransitionExpand>
+        <div class="wrapper2" v-if="index<numberOfNews">
           <div class="title">{{item.title}}</div>
           <div class="news">
             <div class="newsText" v-html="fullNews[index]?item.text:shortenTheNews2(index)"></div>
@@ -18,37 +18,25 @@
         </div>
       </TransitionExpand>
     </div>
+    <div class="moreWrapper">
+      <button class="next" @click="numberOfNews++">Pokaż starsze...</button>
+    </div>
   </div>
 </template>
 
 <script>
 import Vue from "vue";
 import TransitionExpand from "./TransitionExpand";
+import JSON from "./data.json";
 export default {
   name: "News",
   props: {},
   data() {
     return {
       numberOfWords: 30,
-      numberOfNews: 2,
+      numberOfNews: 3,
       fullNews: [],
-      news: [
-        {
-          title: "Wydarzenie parafialne 1",
-          text:
-            "Lorem ipsum dolor sit amet, <b>scelerisque</b> consectetur adipiscing elit. Pellentesque nec libero nunc. Curabitur et <i> a massa convallis</i> <h5>scelerisque ac sit amet elit. Nunc id ante ac tortor pharetra convallis nec non neque.</h5> Suspendisse mi libero, faucibus eget augue non, pulvinar luctus sapien. Praesent efficitur  purus, eget fringilla tortor rhoncus in. Etiam vestibulum eu arcu et varius. Aenean eget dui id sapien ullamcorper euismod in vitae nunc."
-        },
-        {
-          title: "Wydarzenie parafialne 2",
-          text:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec libero nunc. Curabitur et erat a massa convallis scelerisque ac sit amet elit. Nunc id ante ac tortor pharetra convallis nec non neque. Suspendisse mi libero, faucibus eget augue non, pulvinar luctus sapien. Praesent efficitur scelerisque purus, eget fringilla tortor rhoncus in. Etiam vestibulum eu arcu et varius. Aenean eget dui id sapien ullamcorper euismod in vitae nunc."
-        },
-        {
-          title: "Wydarzenie parafialne 3",
-          text:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec libero nunc. Curabitur et erat a massa convallis scelerisque ac sit amet elit. Nunc id ante ac tortor pharetra convallis nec non neque. Suspendisse mi libero, faucibus eget augue non, pulvinar luctus sapien. Praesent efficitur scelerisque purus, eget fringilla tortor rhoncus in. Etiam vestibulum eu arcu et varius. Aenean eget dui id sapien ullamcorper euismod in vitae nunc."
-        }
-      ]
+      news: JSON
     };
   },
   components: { TransitionExpand },
@@ -116,6 +104,9 @@ export default {
 }
 .wrapper {
   width: 95%;
+  & .wrapper2 {
+    padding: 3px 0;
+  }
 
   & .title {
     flex-basis: 95%;
@@ -162,5 +153,18 @@ export default {
       }
     }
   }
+}
+.next {
+  text-align: center;
+
+  background-color: $bgcBlack;
+  border: 2px solid $bgcBlack;
+  border-radius: 1em;
+  border-bottom-right-radius: 0;
+  padding: 0.5em 1em;
+  margin: 0.3em;
+  font-size: 1.1em;
+  font-style: italic;
+  color: $yellow;
 }
 </style>

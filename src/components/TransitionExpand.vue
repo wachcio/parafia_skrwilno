@@ -6,7 +6,7 @@
 <script>
 export default {
   name: "TransitionExpand",
-  props: { item: Object },
+  props: {},
   methods: {
     enter(element) {
       const width = getComputedStyle(element).width;
