@@ -100,6 +100,9 @@ export default {
       if (this.day == "sunday") {
         result = `Liturgia na niedzielę ${this.liturgy.date}`;
       }
+      if (this.day == "yesterday") {
+        result = `Liturgia na wczoraj ${this.liturgy.date}`;
+      }
       return result;
     }
   },
