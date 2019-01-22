@@ -29,8 +29,10 @@ export default {
   justify-content: flex-end;
   width: 100%;
   padding-bottom: 2em;
+  position: relative;
+  top: 0;
 
-  height: calc(100vh - 75px);
+  min-height: calc(100vh - 75px);
 
   @include background("./../assets/anna_matka_mb.jpg", 50%, 25%);
 }

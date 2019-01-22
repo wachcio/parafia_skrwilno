@@ -2,27 +2,30 @@
   <div>
     <nav>
       <img src="./../assets/Church.svg" alt>
-      <h2>Parafia w Skrwilnie</h2>
-      <div class="hamburger" @click="hamburgerClick()">
+      <h2 v-if="window.width<768">Parafia w Skrwilnie</h2>
+      <h2 v-else>Parafia pw. św. Anny w Skrwilnie</h2>
+      <div class="hamburger" @click="hamburgerClick()" v-if="window.width<768">
         <div class="bar1" :class="hamburgerChange"></div>
         <div class="bar2" :class="hamburgerChange"></div>
         <div class="bar3" :class="hamburgerChange"></div>
       </div>
     </nav>
 
-    <Menu :menuIsVisible="menuIsVisible"/>
+    <MenuMobile :menuIsVisible="menuIsVisible" v-if="window.width<window.minTablet"/>
+    <MenuTablet v-if="window.width>window.minTablet"/>
   </div>
 </template>
 
 <script>
-import Menu from "./Menu";
+import MenuMobile from "./MenuMobile";
+import MenuTablet from "./MenuTablet";
 export default {
   name: "Navigation",
-  props: { scrolled: Boolean },
+  props: { scrolled: Boolean, window: Object },
   data() {
     return { hamburgerChange: "", menuIsVisible: false };
   },
-  components: { Menu },
+  components: { MenuMobile, MenuTablet },
   methods: {
     hamburgerClick() {
       this.$emit("setScroll", false);

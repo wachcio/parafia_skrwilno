@@ -31,10 +31,10 @@ import TransitionExpand from "./TransitionExpand";
 import axios from "axios";
 export default {
   name: "News",
-  props: {},
+  props: { window: Object },
   data() {
     return {
-      numberOfWords: 30,
+      numberOfWords: 0,
       numberOfNews: 3,
       fullNews: [],
       news: []
@@ -75,8 +75,31 @@ export default {
   },
   computed: {},
   created() {
+    this.$watch(
+      "window.width",
+      function(val) {
+        // console.log(val);
+
+        if (val > this.window.minTablet) {
+          this.numberOfWords = 60;
+        } else {
+          this.numberOfWords = 30;
+        }
+      },
+      {
+        deep: true
+      }
+    );
     this.getNews();
+    // console.log(this.window.width);
+
+    if (this.window.width > this.window.minTablet) {
+      this.numberOfWords = 60;
+    } else {
+      this.numberOfWords = 30;
+    }
   },
+  mounted() {},
   watch: {}
 };
 </script>

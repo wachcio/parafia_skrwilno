@@ -20,7 +20,7 @@ import AnimateCSS from "./AnimateCSS";
 import VueScrollTo from "vue-scrollto";
 Vue.use(VueScrollTo);
 export default {
-  name: "",
+  name: "MenuMobile",
   props: {
     menuIsVisible: Boolean
   },
@@ -56,6 +56,11 @@ export default {
   z-index: 1000;
   font-size: 1.1em;
   background-color: $bgcBlack;
+  @media (min-width: 768px) {
+    left: 0;
+    width: 100vw;
+  }
+
   & .item {
     border-bottom: 1px solid $yellow;
     padding: 0.6em;

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="container">
-      <Navigation :scrolled="scrolled" @setScroll="setScroll"/>
+      <Navigation :scrolled="scrolled" @setScroll="setScroll" :window="window"/>
       <section id="patron">
         <Patron/>
         <TransitionExpand>
@@ -20,7 +20,7 @@
       <section id="news">
         <MainTitle>Aktualności</MainTitle>
 
-        <News/>
+        <News :window="window"/>
       </section>
       <section id="ourChurch">
         <MainTitle>Nasz kościół</MainTitle>
@@ -72,7 +72,13 @@ export default {
   data() {
     return {
       scrolled: false,
-      liturgies: ""
+      liturgies: "",
+      window: {
+        width: 0,
+        height: 0,
+        minDesktop: 1024,
+        minTablet: 768
+      }
     };
   },
   components: {
@@ -114,12 +120,19 @@ export default {
             this.liturgies.tomorrow = null;
           }
         });
+    },
+    handleResize() {
+      this.window.width = window.innerWidth;
+      this.window.height = window.innerHeight;
     }
   },
   watch: {},
 
   created() {
     this.getLiturgies();
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.handleResize);
   },
   beforeMount() {
     window.addEventListener("scroll", this.handleScroll);
@@ -128,6 +141,10 @@ export default {
   beforeDestroy() {
     window.removeEventListener("scroll", this.handleScroll);
     // console.log("scrolling Destroyed");
+  },
+  mounted() {
+    window.addEventListener("resize", this.handleResize);
+    this.handleResize();
   }
 };
 </script>
