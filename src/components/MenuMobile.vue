@@ -43,14 +43,20 @@ export default {
 
 .menuWrapper {
   position: fixed;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   right: 0;
-  top: 70px;
+  // top: 70px;
   z-index: 1000;
   font-size: 1.1em;
   background-color: $bgcBlack;
   @media (min-width: 768px) {
     left: 0;
     width: 100vw;
+  }
+  @media (orientation: landscape) {
+    font-size: 1em;
   }
 
   & .item {

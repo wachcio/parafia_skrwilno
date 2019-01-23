@@ -114,6 +114,7 @@ export default {
   flex-direction: column;
   margin-bottom: 1em !important;
   background-color: whitesmoke;
+  color: $bgcBlack;
 }
 .wrapper {
   width: 95%;
