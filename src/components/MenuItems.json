@@ -1,0 +1,10 @@
+[
+   { "text": "Słowo Boże", "link": "#wordOfGod" },
+   { "text": "Aktualności", "link": "#news" },
+   { "text": "Nasza parafia", "link": "#ourChurch" },
+   { "text": "Msze święte", "link": "#holyMasses" },
+   { "text": "Duchowni", "link": "#clergy" },
+   { "text": "Galeria", "link": "#gallery" },
+   { "text": "Rys historyczny", "link": "#history" },
+   { "text": "Kontakt", "link": "#contact" }
+]

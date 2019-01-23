@@ -1,20 +1,23 @@
 <template>
   <div class="menuWrapper">
-    <div
-      class="item"
-      v-for="(menuItem, index) in menuItems"
-      :key="index"
-      v-scroll-to="{ 
+    <div class="menu">
+      <div
+        class="item"
+        v-for="(menuItem, index) in menuItems"
+        :key="index"
+        v-scroll-to="{ 
         el: menuItem.link,
         easing: [.6, .80, .30, 1.9],
         duration: 2000 }"
-    >{{menuItem.text}}</div>
+      >{{menuItem.text}}</div>
+    </div>
   </div>
 </template>
 
 <script>
 import Vue from "vue";
 import VueScrollTo from "vue-scrollto";
+import MenuItems from "./MenuItems.json";
 Vue.use(VueScrollTo);
 export default {
   name: "MenuTablet",
@@ -23,16 +26,7 @@ export default {
   },
   data() {
     return {
-      menuItems: [
-        { text: "Słowo Boże", link: "#wordOfGod" },
-        { text: "Aktualności", link: "#news" },
-        { text: "Nasz parafia", link: "#ourChurch" },
-        { text: "Msze święte", link: "#holyMasses" },
-        { text: "Duchowni", link: "#clergy" },
-        { text: "Galeria", link: "#gallery" },
-        { text: "Rys historyczny", link: "#history" },
-        { text: "Kontakt", link: "#contact" }
-      ]
+      menuItems: MenuItems
     };
   },
   components: {},
@@ -49,32 +43,46 @@ export default {
 .menuWrapper {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 
   position: absolute;
 
   top: 70px;
-  z-index: 1000;
+  z-index: 999;
   font-size: 1.1em;
   background-color: $bgcBlack;
   left: 0;
   width: 100vw;
   padding: 0.4em 0.9em;
-
-  & .item {
-    // border: 1px solid $yellow;
-    padding: 0.4em;
+  & .menu {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    z-index: 1000;
+    font-size: 1.1em;
+    background-color: $bgcBlack;
     // position: relative;
     // top: 50%;
     // left: 50%;
     // transform: translate(-50%, -50%);
-    text-align: center;
+    & .item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      // border: 1px solid $yellow;
+      padding: 0.4em;
+      // position: relative;
+      // top: 50%;
+      // left: 50%;
+      // transform: translate(-50%, -50%);
+      text-align: center;
 
-    transition: background-color 0.3s ease-in-out;
-    &:hover {
-      color: $bgcBlack;
-      background-color: $yellow;
-      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+      &:hover {
+        color: $bgcBlack;
+        background-color: $yellow;
+        cursor: pointer;
+      }
     }
   }
 }

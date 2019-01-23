@@ -18,6 +18,7 @@
 import Vue from "vue";
 import AnimateCSS from "./AnimateCSS";
 import VueScrollTo from "vue-scrollto";
+import MenuItems from "./MenuItems.json";
 Vue.use(VueScrollTo);
 export default {
   name: "MenuMobile",
@@ -26,16 +27,7 @@ export default {
   },
   data() {
     return {
-      menuItems: [
-        { text: "Słowo Boże", link: "#wordOfGod" },
-        { text: "Aktualności", link: "#news" },
-        { text: "Nasz parafia", link: "#ourChurch" },
-        { text: "Msze święte", link: "#holyMasses" },
-        { text: "Duchowni", link: "#clergy" },
-        { text: "Galeria", link: "#gallery" },
-        { text: "Rys historyczny", link: "#history" },
-        { text: "Kontakt", link: "#contact" }
-      ]
+      menuItems: MenuItems
     };
   },
   components: { AnimateCSS },

@@ -32,6 +32,7 @@ export default {
   justify-content: center;
   width: 100%;
   padding-bottom: 2em;
+  color: white;
 
   height: calc(100vh - 75px);
 
@@ -58,7 +59,7 @@ export default {
 }
 h1,
 p {
-  color: black;
+  // color: black;
   text-align: center;
   font-size: 1.5em;
 }

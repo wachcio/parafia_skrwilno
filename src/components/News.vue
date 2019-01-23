@@ -113,6 +113,7 @@ export default {
   //   padding: 0.3em 0;
   flex-direction: column;
   margin-bottom: 1em !important;
+  background-color: whitesmoke;
 }
 .wrapper {
   width: 95%;

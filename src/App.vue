@@ -153,7 +153,7 @@ export default {
 @import "./css/common.scss";
 section {
   // height: 350px;
-  color: $bgcBlack;
+  color: white;
 }
 // .h1Wrapper {
 //   display: flex;
