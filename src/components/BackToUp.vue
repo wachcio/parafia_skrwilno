@@ -13,9 +13,7 @@ import VueScrollTo from "vue-scrollto";
 Vue.use(VueScrollTo);
 export default {
   name: "backToUp",
-  components: {
-    VueScrollTo
-  }
+  components: {}
 };
 </script>
 

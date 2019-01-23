@@ -57,7 +57,7 @@ import Patron from "./components/Patron";
 import Liturgy from "./components/Liturgy";
 import News from "./components/News";
 import OurChurch from "./components/OurChurch";
-import TransitionExpand from "./components/TransitionExpand";
+// import TransitionExpand from "./components/TransitionExpand";
 import HolyMasses from "./components/HolyMasses";
 import Clergy from "./components/Clergy";
 import Gallery from "./components/Gallery";
@@ -84,7 +84,6 @@ export default {
     Liturgy,
     News,
     OurChurch,
-    TransitionExpand,
     HolyMasses,
     Clergy,
     Gallery,

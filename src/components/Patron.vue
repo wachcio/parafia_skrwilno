@@ -5,7 +5,9 @@
       <p
         @click="textVisible=!textVisible"
         v-show="!textVisible"
-      >dowiedz się więcej o naszym patronie...</p>
+      >dowiedz się więcej o naszym patronie...
+        <i class="icon icon-arrow-down" @click="textVisible=!textVisible" v-show="!textVisible"></i>
+      </p>
     </div>
     <div class="wrapperText">
       <TransitionExpand>
