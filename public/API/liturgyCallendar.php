@@ -13,7 +13,7 @@ function fillData($day, $link)
     global $data;
     $html = file_get_html($link);
     
-foreach($html->find('div.data') as $r)
+    foreach($html->find('div.data') as $r)
     $data[$day]["date"] = $r->plaintext;
 foreach($html->find('div.weekday_name') as $r)
     $data[$day]["weekday_name"] = $r->plaintext;
@@ -30,14 +30,16 @@ foreach($html->find('div.dwa div.psalm div.siglum') as $r)
 foreach($html->find('div.dwa div.psalm div') as $r)
     $data[$day]["psalm_text"] = $r->innertext;
 foreach($html->find('div.dwa div.werset div') as $r)
-    $data[$day]["before_gospel"] = $r->innertext;
+    $data[$day]["before_gospel_text"] = $r->innertext;
+foreach($html->find('div.dwa div.werset div.siglum') as $r)
+    $data[$day]["before_gospel"] = $r->plaintext;
 foreach($html->find('div.dwa div.ewangelia div.siglum') as $r)
     $data[$day]["gospel"] = $r->plaintext;
 foreach($html->find('div.dwa div.ewangelia div') as $r)
     $data[$day]["gospel_text"] = $r->innertext;
-foreach($html->find('div.jeden div.patroni') as $r)
-    $data[$day]["patronas"] = $r->plaintext;
-foreach($html->find('div.kolor_szat div.dwa') as $r)
+foreach($html->find('div.patroni') as $r)
+    $data[$day]["patronas"] = "$r->plaintext";
+    foreach($html->find('div.kolor_szat div.dwa') as $r)
     $data[$day]["robe"] = substr($r->outertext, 16, -8) . "";
 
     switch ($data[$day]["robe"]) {
