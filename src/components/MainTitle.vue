@@ -3,17 +3,21 @@
     <h1>
       <slot></slot>
     </h1>
+    <BackToUp class="backToUp">
+      <i class="icon icon-upward"></i>
+    </BackToUp>
   </div>
 </template>
 
 <script>
+import BackToUp from "./BackToUp";
 export default {
   name: "MainTitle",
   props: {},
   data() {
     return {};
   },
-  components: {},
+  components: { BackToUp },
   methods: {},
   computed: {},
   created() {},
@@ -33,6 +37,12 @@ export default {
     // @include buttonGradient();
     // width: 100%;
     // text-align: center;
+  }
+
+  & .backToUp {
+    font-size: 1.2em;
+    margin-left: 1em;
+    cursor: pointer;
   }
 }
 </style>

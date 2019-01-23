@@ -149,22 +149,7 @@ export default {
       padding: 0.5em;
     }
     & .moreWrapper {
-      display: flex;
-      justify-content: flex-end;
-      & .more {
-        // flex-basis: 10%;
-        text-align: center;
-
-        background-color: $bgcBlack;
-        border: 2px solid $bgcBlack;
-        border-radius: 1em;
-        border-bottom-right-radius: 0;
-        padding: 0.5em 1em;
-        margin: 0.3em;
-        font-size: 1.1em;
-        font-style: italic;
-        color: $yellow;
-      }
+      @include buttonMore($bgcBlack, $bgcBlack, $yellow);
     }
   }
 }

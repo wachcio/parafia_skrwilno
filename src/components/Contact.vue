@@ -48,7 +48,7 @@
         >Wiadomość powinna mieć conajmniej {{$v.message.$params.minLength.min}} znaków.</div>
       </div>
       <div class="buttonWrapper">
-        <button type="submit" @click.prevent :disabled="$v.$invalid">Wyślij</button>
+        <button class="more" type="submit" @click.prevent :disabled="$v.$invalid">Wyślij</button>
       </div>
     </form>
   </div>
@@ -153,23 +153,8 @@ textarea {
   }
 }
 .buttonWrapper {
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-}
-button {
-  text-align: center;
-
-  background-color: $yellow;
-  border: 2px solid $yellow;
-  border-radius: 1em;
-  border-bottom-right-radius: 0;
-  padding: 0.5em 1em;
-  margin: 0.3em;
-  font-size: 1.1em;
-  font-style: italic;
-  color: $bgcBlack;
-  &:disabled {
+  @include buttonMore($yellow, $yellow, $bgcBlack);
+  & button:disabled {
     opacity: 0.3;
   }
 }

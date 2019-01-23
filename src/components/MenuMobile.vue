@@ -16,10 +16,10 @@
 
 <script>
 import Vue from "vue";
-import AnimateCSS from "./AnimateCSS";
 import VueScrollTo from "vue-scrollto";
-import MenuItems from "./MenuItems.json";
 Vue.use(VueScrollTo);
+import AnimateCSS from "./AnimateCSS";
+import MenuItems from "./MenuItems.json";
 export default {
   name: "MenuMobile",
   props: {

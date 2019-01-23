@@ -4,9 +4,6 @@
       <Navigation :scrolled="scrolled" @setScroll="setScroll" :window="window"/>
       <section id="patron">
         <Patron/>
-        <TransitionExpand>
-          <div></div>
-        </TransitionExpand>
       </section>
       <section id="wordOfGod">
         <MainTitle>Słowo Boże</MainTitle>
