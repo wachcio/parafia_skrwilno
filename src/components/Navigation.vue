@@ -9,6 +9,7 @@
         <div class="bar2" :class="hamburgerChange"></div>
         <div class="bar3" :class="hamburgerChange"></div>
       </div>
+      <div class="empty" v-else></div>
     </nav>
 
     <MenuMobile :menuIsVisible="menuIsVisible" v-if="window.width<window.minTablet"/>
@@ -56,10 +57,11 @@ export default {
 @import "./../css/common.scss";
 nav {
   display: flex;
-  width: 100vw;
+  // width: 100vw;
   flex-basis: 100%;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   text-align: center;
   padding: 15px;
 
@@ -67,11 +69,21 @@ nav {
   background-color: $bgcBlack;
 
   & h2 {
-    width: 100%;
+    // width: 100%;
+    text-align: center;
+    display: inline-block;
+  }
+
+  & .empty {
+    width: 56px;
+    height: 56px;
+    background-color: transparent;
+    font-size: 1em;
   }
   & .hamburger {
     width: 35px;
     font-size: 1em;
+    margin-right: 0.5em;
 
     & .bar1,
     & .bar2,
