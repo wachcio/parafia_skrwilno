@@ -2,14 +2,14 @@
   <div class="wrapper">
     <div class="wrapperPatronImg">
       <h1
-        @click="textVisible=!textVisible"
+        @click="textVisible=true"
         v-scroll-to="{ 
         el: '.wrapperText',
         easing: [.6, .80, .30, 1.9],
         duration: 2000 }"
       >św. Anna</h1>
       <p
-        @click="textVisible=!textVisible"
+        @click="textVisible=true"
         v-show="!textVisible"
         v-scroll-to="{ 
         el: '.wrapperText',
@@ -19,7 +19,7 @@
         dowiedz się więcej o naszym patronie...
         <i
           class="icon icon-arrow-down"
-          @click="textVisible=!textVisible"
+          @click="textVisible=true"
           v-show="!textVisible"
           v-scroll-to="{ 
         el: '.wrapperText',

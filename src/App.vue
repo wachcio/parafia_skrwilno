@@ -153,7 +153,10 @@ section {
   @include sectionHeigth(70vh, 85vh);
 
   &#liturgy {
-    @include sectionHeigth(50vh, 85vh);
+    @include sectionHeigth(50vh, 80vh);
+    @media (min-width: 400px) {
+      @include sectionHeigth(25vh, 25vh);
+    }
   }
 }
 </style>
