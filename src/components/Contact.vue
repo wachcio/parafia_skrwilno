@@ -107,11 +107,7 @@ export default {
   color: #fff;
 
   @include background("./../assets/antique-black-call-1416530.jpg", 50%, 20%);
-  min-height: calc(100vh - 75px);
-
-  @media (orientation: landscape) {
-    min-height: calc(100vw - 75px);
-  }
+  @include sectionHeigth(80vh, 85vh);
 }
 form {
   margin-top: 0.5em;

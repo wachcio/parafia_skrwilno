@@ -33,7 +33,7 @@ export default {
   width: 100%;
   padding-bottom: 2em;
 
-  height: calc(100vh - 75px);
+  min-height: calc(60vh - 75px);
 
   @include background("./../assets/blur-burn-burning-278779.jpg", 50%, 20%);
 }
@@ -41,6 +41,14 @@ h1,
 p {
   color: white;
   text-align: center;
-  font-size: 1em;
+  font-size: 1.3em;
+  margin: 2em;
+  text-align: justify;
+}
+
+p {
+  @media (min-width: 768px) {
+    font-size: 1.5em;
+  }
 }
 </style>

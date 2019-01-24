@@ -5,7 +5,7 @@
       <section id="patron">
         <Patron/>
       </section>
-      <section id="wordOfGod">
+      <section id="liturgy">
         <MainTitle>Słowo Boże</MainTitle>
         <Liturgy
           v-for="(liturgy, index) in liturgies"
@@ -150,25 +150,10 @@ export default {
 section {
   // height: 350px;
   color: white;
+  @include sectionHeigth(70vh, 85vh);
+
+  &#liturgy {
+    @include sectionHeigth(50vh, 85vh);
+  }
 }
-// .h1Wrapper {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-
-//   & h1 {
-//     margin: 0;
-//     padding: 0;
-//     // @include buttonGradient();
-//     // width: 100%;
-//     // text-align: center;
-//   }
-// }
-
-// section .wrapper {
-//   height: calc(100vh - 75px);
-//   @media (orientation: landscape) {
-//     height: calc(100vw - 75px);
-//   }
-// }
 </style>

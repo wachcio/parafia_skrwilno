@@ -35,7 +35,7 @@ export default {
   width: 100%;
   padding-bottom: 2em;
 
-  height: calc(100vh - 75px);
+  @include sectionHeigth(70vh, 85vh);
 
   @include background("./../assets/antique-bible-blur-268424.jpg", 50%, 25%);
 }

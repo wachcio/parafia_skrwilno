@@ -107,3 +107,13 @@
       color: $fontColor;
    }
 }
+
+@mixin sectionHeigth($pHeight, $lHeight) {
+   // min-height: calc($pHeight - 75px);
+   min-height: $pHeight;
+
+   @media (orientation: landscape) {
+      // min-height: calc($lHeight - 75px);
+      min-height: $lHeight;
+   }
+}

@@ -34,7 +34,7 @@ export default {
   padding-bottom: 2em;
   color: white;
 
-  height: calc(100vh - 75px);
+  @include sectionHeigth(70vh, 85vh);
 
   // @include background(
   //   "./../assets/adult-black-and-white-ceremony-1451043.jpg",

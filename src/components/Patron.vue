@@ -1,12 +1,31 @@
 <template>
   <div class="wrapper">
     <div class="wrapperPatronImg">
-      <h1 @click="textVisible=!textVisible">św. Anna</h1>
+      <h1
+        @click="textVisible=!textVisible"
+        v-scroll-to="{ 
+        el: '.wrapperText',
+        easing: [.6, .80, .30, 1.9],
+        duration: 2000 }"
+      >św. Anna</h1>
       <p
         @click="textVisible=!textVisible"
         v-show="!textVisible"
-      >dowiedz się więcej o naszym patronie...
-        <i class="icon icon-arrow-down" @click="textVisible=!textVisible" v-show="!textVisible"></i>
+        v-scroll-to="{ 
+        el: '.wrapperText',
+        easing: [.6, .80, .30, 1.9],
+        duration: 2000 }"
+      >
+        dowiedz się więcej o naszym patronie...
+        <i
+          class="icon icon-arrow-down"
+          @click="textVisible=!textVisible"
+          v-show="!textVisible"
+          v-scroll-to="{ 
+        el: '.wrapperText',
+        easing: [.6, .80, .30, 1.9],
+        duration: 2000 }"
+        ></i>
       </p>
     </div>
     <div class="wrapperText">
@@ -39,6 +58,8 @@
 </template>
 
 <script>
+import Vue from "vue";
+import VueScrollTo from "vue-scrollto";
 import BackToUp from "./BackToUp";
 import TransitionExpand from "./TransitionExpand";
 export default {
