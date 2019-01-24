@@ -1,15 +1,19 @@
 <template>
   <div class="menuWrapper">
     <div class="menu">
-      <div
-        class="item"
-        v-for="(menuItem, index) in menuItems"
-        :key="index"
-        v-scroll-to="{ 
+      <ul>
+        <li
+          class="item"
+          v-for="(menuItem, index) in menuItems"
+          :key="index"
+          v-scroll-to="{ 
         el: menuItem.link,
         easing: [.6, .80, .30, 1.9],
         duration: 2000 }"
-      >{{menuItem.text}}</div>
+        >
+          <a>{{menuItem.text}}</a>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -42,6 +46,7 @@ export default {
 
 .menuWrapper {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 
@@ -54,37 +59,43 @@ export default {
   left: 0;
   width: 100vw;
   padding: 0.4em 0.9em;
-  & .menu {
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
-    z-index: 1000;
-    font-size: 1.1em;
-    background-color: $bgcBlack;
-    // position: relative;
-    // top: 50%;
-    // left: 50%;
-    // transform: translate(-50%, -50%);
-    & .item {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      // border: 1px solid $yellow;
-      padding: 0.4em;
-      // position: relative;
-      // top: 50%;
-      // left: 50%;
-      // transform: translate(-50%, -50%);
-      text-align: center;
+}
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  background-color: $bgcBlack;
+  transition: 0.5s all ease-in;
+  cursor: pointer;
+}
+ul li {
+  list-style: none;
+  margin: 0 1em;
+  transition: 0.5s all ease-in;
+}
+ul li a {
+  display: block;
+  position: relative;
+  text-decoration: none;
+  padding: 5px;
+  color: $yellow;
+  text-transform: uppercase;
+}
 
-      transition: background-color 0.3s ease-in-out;
-      &:hover {
-        color: $bgcBlack;
-        background-color: $yellow;
-        cursor: pointer;
-      }
-    }
-  }
+ul:hover li a {
+  transform: scale(1.2);
+  opacity: 0.2;
+  filter: blur(5px);
+  transition: 0.5s;
+}
+ul li a:hover {
+  transform: scale(1.5);
+  opacity: 1;
+  filter: blur(0);
 }
 </style>
 
