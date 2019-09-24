@@ -32,8 +32,8 @@ export default {
         height: "auto"
       },
       fluxImages: [
-        "http://wachcio.pl/parafia_skrwilno/img/kosciol1.jpg",
-        "http://wachcio.pl/parafia_skrwilno/img/kosciol2.jpg"
+        "http://parafia.wachcio.pl/img/kosciol1.jpg",
+        "http://parafia.wachcio.pl/img/kosciol2.jpg"
       ],
       fluxCaptions: ["Opis 1", "Opis 2"],
       fluxTransitions: {

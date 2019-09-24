@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <div class="container">
-      <Navigation :scrolled="scrolled" @setScroll="setScroll" :window="window"/>
+      <Navigation :scrolled="scrolled" @setScroll="setScroll" :window="window" />
       <section id="patron">
-        <Patron/>
+        <Patron />
       </section>
       <section id="liturgy">
         <MainTitle>Słowo Boże</MainTitle>
@@ -17,31 +17,31 @@
       <section id="news">
         <MainTitle>Aktualności</MainTitle>
 
-        <News :window="window"/>
+        <News :window="window" />
       </section>
       <section id="ourChurch">
         <MainTitle>Nasz kościół</MainTitle>
-        <OurChurch/>
+        <OurChurch />
       </section>
       <section id="holyMasses">
         <MainTitle>Msze święte</MainTitle>
-        <HolyMasses/>
+        <HolyMasses />
       </section>
       <section id="clergy">
         <MainTitle>Duchowni</MainTitle>
-        <Clergy/>
+        <Clergy />
       </section>
       <section id="gallery">
         <MainTitle>Galeria</MainTitle>
-        <Gallery/>
+        <Gallery />
       </section>
       <section id="history">
         <MainTitle>Rys historyczny</MainTitle>
-        <History/>
+        <History />
       </section>
       <section id="contact">
         <MainTitle>Kontakt</MainTitle>
-        <Contact/>
+        <Contact />
       </section>
       <footer>
         <h1>Wachcio&copy;2019</h1>
@@ -103,7 +103,7 @@ export default {
     },
     getLiturgies() {
       axios
-        .get("http://wachcio.pl/parafia_skrwilno/API/liturgyCallendar.php")
+        .get("http://parafia.wachcio.pl/API/liturgyCallendar.php")
         .then(response => {
           // handle success
           // console.log(response);
@@ -148,7 +148,6 @@ export default {
 <style lang="scss">
 @import "./css/common.scss";
 section {
-  // height: 350px;
   color: white;
   @include sectionHeigth(70vh, 85vh);
 

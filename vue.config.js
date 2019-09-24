@@ -1,6 +1,5 @@
 module.exports = {
-   publicPath:
-      process.env.NODE_ENV === "production" ? "/parafia_skrwilno/" : "/",
+   publicPath: process.env.NODE_ENV === "production" ? "/" : "/",
    configureWebpack: {
       devtool:
          process.env.NODE_ENV === "production"

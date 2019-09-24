@@ -63,14 +63,12 @@ export default {
       }
     },
     getNews() {
-      axios
-        .get("http://wachcio.pl/parafia_skrwilno/API/news.php")
-        .then(response => {
-          // handle success
-          // console.log(response);
-          this.news = response.data;
-          this.fillFullNews();
-        });
+      axios.get("http://parafia.wachcio.pl/API/news.php").then(response => {
+        // handle success
+        // console.log(response);
+        this.news = response.data;
+        this.fillFullNews();
+      });
     }
   },
   computed: {},
