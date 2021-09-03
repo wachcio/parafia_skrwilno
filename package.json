@@ -10,7 +10,7 @@
       "deploy": "node deploy"
    },
    "dependencies": {
-      "axios": "^0.18.0",
+      "axios": "^0.21.1",
       "ftp-deploy": "^2.3.0",
       "spectre.css": "^0.5.8",
       "vue": "^2.5.21",
